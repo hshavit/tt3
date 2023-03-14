@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "Name": "Joe",
+      "Id": "1234",
+      "Street": "Herzel",
+      "City": "Tel Aviv"
+    },
+    {
+      "Name": "Sam",
+      "Id": "9875",
+      "Street": "Haashiryon",
+      "City": "Jerusalrm"
+    },
+    {
+      "Name": "Hil",
+      "Id": "4585",
+      "Street": "Hashita",
+      "City": "Ashdod"
+    },
+    {
+      "Name": "Guy",
+      "Id": "4685",
+      "Street": "Hearzel",
+      "City": "Haogen"
+    }
+  ]
+}

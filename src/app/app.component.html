@@ -1,0 +1,501 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<div *ngIf="true">
+  <mat-toolbar color="secondary">
+    <mat-nav-list class="list-horizontal">
+
+       <mat-list-item  (click) = "clientFlg=!clientFlg" style="width:auto"
+       [ngStyle] = "{ 'backgroundColor' : !clientFlg ? 'gray' : 'white'  }">
+        <button mat-menu-item>Employee</button>
+      </mat-list-item>
+
+      <mat-list-item
+      [ngStyle] = "{ 'backgroundColor' : clientFlg ? 'gray' : 'white'  }"
+      (click) = "clientFlg=!clientFlg" style="width:auto"  >
+        <button mat-menu-item>Client</button>
+      </mat-list-item>
+
+      <!-- <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="billsmenu">Bills</button>
+      </mat-list-item> -->
+
+      <!-- <mat-menu #billsmenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Bill Management</span>
+        </button>
+      </mat-menu>
+   -->
+      <!-- <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="claimsmenu">Client</button>
+      </mat-list-item> -->
+      <!-- <mat-menu #claimsmenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Claims Management</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>save_alt</mat-icon>
+          <span>My Downloads </span>
+        </button>
+      </mat-menu> -->
+
+      <!-- <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="mcsMenu">Managed Care Solutions</button>
+      </mat-list-item>
+      <mat-menu #mcsMenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>UR Management</span>
+        </button>
+      </mat-menu>
+
+      <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="referralsmenu">Referrals</button>
+      </mat-list-item>
+      <mat-menu #referralsmenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Telephonic Case Management</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>save_alt</mat-icon>
+          <span>Utilization Review </span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Pharmacy Management</span>
+        </button>
+      </mat-menu>
+
+      <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="DRmenu">Dashboards & Reports</button>
+      </mat-list-item>
+      <mat-menu #DRmenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Dashboards</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>save_alt</mat-icon>
+          <span>Reports </span>
+        </button>
+      </mat-menu>
+
+      <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="adminmenu">Administration</button>
+      </mat-list-item>
+      <mat-menu #adminmenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Coverage</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>save_alt</mat-icon>
+          <span>Configuration</span>
+        </button>
+      </mat-menu>
+
+      <mat-list-item>
+        <button mat-menu-item [matMenuTriggerFor]="searchmenu">Search</button>
+      </mat-list-item>
+      <mat-menu #searchmenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Bills</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>save_alt</mat-icon>
+          <span>Claims </span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Providers</span>
+        </button>
+      </mat-menu> -->
+
+
+
+
+    </mat-nav-list>
+  </mat-toolbar>
+
+
+  <!-- <app-emp-login></app-emp-login> -->
+
+  <div  *ngIf="true"  >
+
+  <app-autocomplete *ngIf="false"
+  [data]="this.driverService.Cities"
+  [searchKeyword]="keyword"
+  placeHolder="Enter the City name"
+  iconName="search"
+  (selected)="selectEvent($event)"
+  (inputChanged)="onChangeSearch($event)"
+  (inputFocused)="onFocused($event)"
+  historyIdentifier="Cities"
+  [itemTemplate]="itemTemplate"
+  [notFoundTemplate]="notFoundTemplate"
+  >
+  </app-autocomplete>
+
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+
+
+  <router-outlet></router-outlet>
+
+  <div  *ngIf="InsertForm"  style="z-index: 2147483647; position:absolute;  display:flex;  flex-direction: column; background: cyan;  width: 250px; height: 350px;  border: 1px solid black; "  class="flex-container drag-block rounded-border-gradient" ngDraggable>
+
+    <h3>  Insert Pizza </h3>
+    <input   #nname style="margin-bottom: 10px; margin-left: 10px;margin-right: 10px;" class="autocomplete-container input-container"   type ="text" formControlName = 'name' placeholder="Enter  Name">
+
+    <input  #iid style="margin-bottom: 10px; margin-left: 10px;margin-right: 10px;" class="autocomplete-container input-container" type ="Number" formControlName = 'id' placeholder="Enter Id">
+
+    <app-autocomplete
+    #sstreets
+    [data]="this.driverService.Streets"
+    [searchKeyword]="keyword"
+    placeHolder="Enter the Street name"
+    iconName="search"
+    (selected)="selectEvent($event)"
+    (inputChanged)="onChangeSearch($event)"
+    (inputFocused)="onFocused($event)"
+    historyIdentifier="Streets"
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    >
+    </app-autocomplete>
+    <app-autocomplete
+    style="margin-bottom: 15px;"
+    #ccities
+    [data]="this.driverService.Cities"
+  [searchKeyword]="keyword"
+  placeHolder="Enter the City name"
+  iconName="search"
+  (selected)="selectEvent2($event)"
+  (inputChanged)="onChangeSearch($event)"
+  (inputFocused)="onFocused($event)"
+  historyIdentifier="Cities"
+  [itemTemplate]="itemTemplate"
+  [notFoundTemplate]="notFoundTemplate"
+  >
+  </app-autocomplete>
+
+  <button (click)="insert()" style="display:flexbox"  > click to Insert </button>
+  </div>
+
+  <h3>Pizza  List</h3>
+
+  <p-table
+    [columns]="cols"
+    [value]="_drivers"
+    [lazy]="true"
+    (onLazyLoad)="loadDriversLazy($event)"
+    selectionMode="single"
+    [(selection)]="selectedDriver"
+    [rows]="10000"
+    [rowsPerPageOptions]="pageSizeOptions"
+    dataKey="Name"
+    [resizableColumns]="true"
+    columnResizeMode="fit"
+  >
+    <ng-template *ngIf = "false"  pTemplate="header" let-columns let-expanded="expanded">
+      <tr>
+        <th style="width:2.8em"></th>
+        <th style="width:2.5em"></th>
+        <th
+          *ngFor="let col of columns"
+          pReorderableColumn
+          [pSortableColumn]="col.field"
+          pResizableColumn
+          [style.width]="col.width"
+        >
+          {{ col.header }}
+          <p-sortIcon
+            [field]="col.field"
+            ariaLabel="Activate to sort"
+            ariaLabelDesc="Activate to sort in descending order"
+            ariaLabelAsc="Activate to sort in ascending order"
+          ></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template
+      pTemplate="body"
+      let-rowData
+      let-columns="columns"
+      let-index="rowIndex"
+      let-expanded="expanded"
+    >
+      <tr [pReorderableRow]="index" [pSelectableRow]="rowData">
+        <td>
+          <a href="#" [pRowToggler]="rowData" *ngIf="rowData.Name % 2">
+            <i
+              [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            ></i>
+          </a>
+        </td>
+        <td>
+          <i class="fa fa-bars" pReorderableRowHandle></i>
+        </td>
+        <td>{{ rowData.Name }}</td>
+        <td>{{ rowData.Id }}</td>
+        <td>{{ rowData.Street }}</td>
+        <td>{{ rowData.City }}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+  <button (click)="Add()">Add</button>
+
+  <app-autocomplete *ngIf="false"
+  [data]="this.driverService.Cities"
+  [searchKeyword]="keyword"
+  placeHolder="Enter the City name"
+  iconName="search"
+  (selected)="selectEvent($event)"
+  (inputChanged)="onChangeSearch($event)"
+  (inputFocused)="onFocused($event)"
+  historyIdentifier="Cities"
+  [itemTemplate]="itemTemplate"
+  [notFoundTemplate]="notFoundTemplate"
+  >
+  </app-autocomplete>
+
+  <div>
+    <div class="mat-elevation-z8">
+      <button><mat-icon (click)="AddNewRow()" class="add-button">add_box</mat-icon></button>
+      <br />
+      <mat-form-field style="width: 40%">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+      <mat-form-field style="width: 20%; float: right;">
+        <mat-label>Go to Page</mat-label>
+        <input matInput type="number" placeholder="Enter page number" [(ngModel)]="driverService.pageNumber" (ngModelChange)="goToPage()">
+      </mat-form-field>
+      <form [formGroup]="driverService.VOForm" autocomplete="off">
+        <ng-container formArrayName="VORows">
+          <table #table mat-table [dataSource]="driverService.dataSource" class="mat-elevation-z8">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="Name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                <mat-form-field style="width: 170px;" appearance="fill">
+                  <input matInput type="text" formControlName="Name" [readonly]="driverService.VOForm.get('VORows').value[i].isEditable">
+                </mat-form-field>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Desc">
+              <th mat-header-cell *matHeaderCellDef> Desc </th>
+              <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+
+                <!-- <span [hidden]="driverService.VOForm.get('VORows').value[i].isEditable"> -->
+                <mat-form-field style="width: 270px;"
+                  [appearance]="driverService.VOForm.get('VORows').value[i].isEditable? 'fill' : 'outline'">
+                  <input matInput type="text" formControlName="Desc" [readonly]="driverService.VOForm.get('VORows').value[i].isEditable">
+                </mat-form-field>
+                <!-- </span> -->
+
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                <!-- [appearance]="true ? 'outline': 'fill'" -->
+                <!-- <span [hidden]="driverService.VOForm.get('VORows').value[i].isEditable"> -->
+                <mat-form-field style="width: 70px;"
+                  [appearance]="driverService.VOForm.get('VORows').value[i].isEditable? 'fill' : 'outline'">
+                  <input matInput type="text" formControlName="Price" [readonly]="driverService.VOForm.get('VORows').value[i].isEditable">
+                </mat-form-field>
+                <!-- </span> -->
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+                <button mat-icon-button class="material-icons app-toolbar-menu save-button"
+                                        matTooltip="Save Changes" (click)="SaveVO(driverService.VOForm,i)"
+                                        *ngIf="!driverService.VOForm.get('VORows').value[i].isEditable" color="primary">
+                                        <mat-icon>check_circle</mat-icon>
+                                    </button>
+
+                <button mat-icon-button class="material-icons app-toolbar-menu cancel-button"
+                                        matTooltip="Cancel Changes" color="warn"
+                                        (click)="CancelSVO(driverService.VOForm,i)"
+                                        *ngIf="!driverService.VOForm.get('VORows').value[i].isEditable">
+                                        <mat-icon>cancel</mat-icon>
+                                    </button>
+
+                <button mat-icon-button class="material-icons app-toolbar-menu save-button"
+                                        *ngIf="driverService.VOForm.get('VORows').value[i].isEditable"
+                                        matTooltip="Edit" color="primary" (click)="EditSVO(driverService.VOForm,i)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+
+                <button mat-icon-button class="material-icons app-toolbar-menu delete-button"
+                                        *ngIf="driverService.VOForm.get('VORows').value[i].isEditable"
+                                        matTooltip="Delete" color="warn">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="driverService.displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: driverService.displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+        </ng-container>
+      </form>
+      <mat-card *ngIf="driverService.isLoading" style="display: flex; justify-content: center; align-items: center">
+      <mat-progress-spinner
+        color="primary"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </mat-card>
+
+      <!-- <mat-paginator-goto [length]="100" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="paginationChange($event)"></mat-paginator-goto> -->
+      <mat-paginator [pageSizeOptions]="[5, driverService.dataSource.data.length>8? driverService.dataSource.data.length:0  ]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+
+  </div>
+  </div>
+
+
+  </div>
+
+<div *ngIf =  "false">
+  <div class="mat-elevation-z8">
+    <button><mat-icon (click)="AddNewRow()" class="add-button">add_box</mat-icon></button>
+    <br />
+    <mat-form-field style="width: 40%">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <mat-form-field style="width: 20%; float: right;">
+      <mat-label>Go to Page</mat-label>
+      <input matInput type="number" placeholder="Enter page number" [(ngModel)]="driverService.pageNumber" (ngModelChange)="goToPage()">
+    </mat-form-field>
+    <form [formGroup]="driverService.VOForm" autocomplete="off">
+      <ng-container formArrayName="VORows">
+        <table #table mat-table [dataSource]="driverService.dataSource" class="mat-elevation-z8">
+
+          <!-- Position Column -->
+
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+
+              <!-- <span [hidden]="driverService.VOForm.get('VORows').value[i].isEditable"> -->
+              <mat-form-field style="width: 70px;"
+                [appearance]="driverService.VOForm.get('VORows').value[i].isEditable? 'fill' : 'outline'">
+                <input matInput type="text" formControlName="Name" [readonly]="driverService.VOForm.get('VORows').value[i].isEditable">
+              </mat-form-field>
+              <!-- </span> -->
+
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Desc">
+            <th mat-header-cell *matHeaderCellDef> Weight </th>
+            <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+              <!-- [appearance]="true ? 'outline': 'fill'" -->
+              <!-- <span [hidden]="driverService.VOForm.get('VORows').value[i].isEditable"> -->
+              <mat-form-field style="width: 70px;"
+                [appearance]="driverService.VOForm.get('VORows').value[i].isEditable? 'fill' : 'outline'">
+                <input matInput type="text" formControlName="Desc" [readonly]="driverService.VOForm.get('VORows').value[i].isEditable">
+              </mat-form-field>
+              <!-- </span> -->
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+              <!-- <span [hidden]="driverService.VOForm.get('VORows').value[i].isEditable"> -->
+              <mat-form-field style="width: 70px;"
+                [appearance]="driverService.VOForm.get('VORows').value[i].isEditable? 'fill' : 'outline'">
+                <input matInput type="text" formControlName="Price" [readonly]="driverService.VOForm.get('VORows').value[i].isEditable">
+              </mat-form-field>
+              <!-- </span> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+              <button mat-icon-button class="material-icons app-toolbar-menu save-button"
+                                      matTooltip="Save Changes" (click)="SaveVO(driverService.VOForm,i)"
+                                      *ngIf="!driverService.VOForm.get('VORows').value[i].isEditable" color="primary">
+                                      <mat-icon>check_circle</mat-icon>
+                                  </button>
+
+              <button mat-icon-button class="material-icons app-toolbar-menu cancel-button"
+                                      matTooltip="Cancel Changes" color="warn"
+                                      (click)="CancelSVO(driverService.VOForm,i)"
+                                      *ngIf="!driverService.VOForm.get('VORows').value[i].isEditable">
+                                      <mat-icon>cancel</mat-icon>
+                                  </button>
+
+              <button mat-icon-button class="material-icons app-toolbar-menu save-button"
+                                      *ngIf="driverService.VOForm.get('VORows').value[i].isEditable"
+                                      matTooltip="Edit" color="primary" (click)="EditSVO(driverService.VOForm,i)">
+                                      <mat-icon>edit</mat-icon>
+                                  </button>
+
+              <button mat-icon-button class="material-icons app-toolbar-menu delete-button"
+                                      *ngIf="driverService.VOForm.get('VORows').value[i].isEditable"
+                                      matTooltip="Delete" color="warn">
+                                      <mat-icon>delete</mat-icon>
+                                  </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="driverService.displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: driverService.displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      </ng-container>
+    </form>
+    <mat-card *ngIf="driverService.isLoading" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner
+      color="primary"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </mat-card>
+
+    <!-- <mat-paginator-goto [length]="100" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="paginationChange($event)"></mat-paginator-goto> -->
+    <mat-paginator [pageSizeOptions]="[5, driverService.dataSource.data.length>8? driverService.dataSource.data.length:0  ]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+
+</div>

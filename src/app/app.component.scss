@@ -1,0 +1,50 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.list-horizontal {
+  float: right;
+  display: flex;
+  }
+
+
+th{
+text-align: inherit;
+}
+
+
+.drag-block{
+  width: 150px;
+  height: 150px;
+}
+
+
+.flex-container > button {
+  text-align: center;
+  line-height: 41px;
+  font-size: 30px;
+}
+
+
+table {
+  width: 100%;
+}
+
+.mat-paginator-range-label {
+    display: none;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(255, 255, 255);
+  /* background-color: white; */
+}
+/* Font color */
+input.mat-input-element {
+  color: rgb(0, 0, 0);
+}
